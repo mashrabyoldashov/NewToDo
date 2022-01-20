@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Document</title>
+  </head>
+  <body class="bg-dark">
+
+
+    <div class="container w-50 py-5">
+
+      <h1 class="text-center text-light mb-5 fs-1">
+        To-Do
+      </h1>
+
+      <form class="form-inline d-flex">
+        <div class="form-group w-75">
+          <input
+            type="text"
+            class="form-control text-light fs-3 py-3 bg-dark"
+            id="inputPassword2"
+            placeholder="Create your plan"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-dark border border-white w-25"><span class="fs-1">+</span></button>
+      </form>
+
+      <ul class="list border border-light mt-5 mb-5 p-0 list-unstyled bg-dark"></ul>
+      <ul class="p-0 list-unstyled d-flex justify-content-evenly align-items-center">
+        <li>
+          <div class="border border-primary text-primary rounded p-2">
+            All: 0
+          </div>
+        </li>
+        <li>
+          <div class="border border-secondary text-secondary rounded p-2">
+            Completed: 0
+          </div>
+        </li>
+        <li>
+          <div class="border border-danger text-danger rounded p-2">
+            UnCompleted: 0
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
