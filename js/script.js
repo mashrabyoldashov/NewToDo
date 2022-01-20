@@ -3,9 +3,9 @@
 let elFormListen = document.querySelector('.form-inline');
 let elInputValue = document.querySelector('.form-control');
 let elTodoList = document.querySelector('.list');
-let elResult1 = document.querySelector('.border-primary')
-let elResult2 = document.querySelector('.border-secondary');
-let elResult3 = document.querySelector('.border-danger');
+let elBtnResult1 = document.querySelector('.btn-outline-primary')
+let elBtnResult2 = document.querySelector('.btn-outline-secondary');
+let elBtnResult3 = document.querySelector('.btn-outline-danger');
 
 let todos = []
 
@@ -93,7 +93,7 @@ const renderTodos = function(todosArray, element) {
 elFormListen.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    elResult1.textContent = "All: " + (todos.length + 1) 
+    elBtnResult1.textContent = "All: " + (todos.length + 1) 
     let inputValue = elInputValue.value.trim();
 
     let newTodo = {
@@ -109,4 +109,21 @@ elFormListen.addEventListener('submit', (evt) => {
     elInputValue.value = null;
     
     renderTodos(todos, elTodoList);
+})
+
+
+elBtnResult2.addEventListener('click', ()=>{
+    let selected = todos.filter(check =>{
+        return check.isCompleted === true;
+    })
+
+    elBtnResult2.textContent = "Completed: " + (selected.length);
+})
+
+elBtnResult3.addEventListener('click', ()=>{
+    let notSelected = todos.filter(notCheck =>{
+        return notCheck.isCompleted === false;
+    })
+
+    elBtnResult3.textContent = "UnCompleted: " + (notSelected.length);
 })
