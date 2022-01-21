@@ -43,6 +43,10 @@ elTodoList.addEventListener('click', (evt) => {
 
 const renderTodos = function(todosArray, element) {
 
+    elBtnResult1.textContent = "All: " + todos.length;
+    elBtnResult2.textContent = "Completed: " + todos.filter(todo => todo.isCompleted).length
+    elBtnResult3.textContent = "UnCompleted: " + todos.filter(todo => !todo.isCompleted).length
+
     todosArray.forEach(todo => {
 
         //CREATE ELEMENTS
@@ -92,8 +96,7 @@ const renderTodos = function(todosArray, element) {
 
 elFormListen.addEventListener('submit', (evt) => {
     evt.preventDefault();
-
-    elBtnResult1.textContent = "All: " + (todos.length + 1) 
+ 
     let inputValue = elInputValue.value.trim();
 
     let newTodo = {
@@ -111,13 +114,22 @@ elFormListen.addEventListener('submit', (evt) => {
     renderTodos(todos, elTodoList);
 })
 
+elBtnResult1.addEventListener('click', ()=> {
+    elTodoList.innerHTML = null;
+    renderTodos(todos, elTodoList);
+})
+
 
 elBtnResult2.addEventListener('click', ()=>{
     let selected = todos.filter(check =>{
         return check.isCompleted === true;
     })
 
+    elTodoList.innerHTML = null;
+
     elBtnResult2.textContent = "Completed: " + (selected.length);
+
+    renderTodos(selected, elTodoList);
 })
 
 elBtnResult3.addEventListener('click', ()=>{
@@ -125,5 +137,7 @@ elBtnResult3.addEventListener('click', ()=>{
         return notCheck.isCompleted === false;
     })
 
-    elBtnResult3.textContent = "UnCompleted: " + (notSelected.length);
+    elTodoList.innerHTML = null;
+
+    renderTodos(notSelected, elTodoList);
 })
